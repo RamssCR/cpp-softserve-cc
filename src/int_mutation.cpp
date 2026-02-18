@@ -11,7 +11,8 @@ void bet(int& x, int& y) {
         y = y * 2;
 }
 
-// TIP Check by using C++ debugger.
+// To check the exercise works correctly, replace it on the main.cpp file.
+// Check by using C++ debugger.
 int main() {
     int x{20}, y{50};
 
