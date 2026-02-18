@@ -25,14 +25,15 @@ char sanitize_unit(const char unit) {
 int temperature_conversion(const double temperature, const char unit_in, const char unit_out) {
     if (unit_in == unit_out) return static_cast<int>(temperature);
     const std::string conversion = {unit_in, unit_out};
+    constexpr double KELVIN_CONSTANT = 273.15;
 
     static const std::unordered_map<std::string, ConversionFunc> formulas{
         {"FC", [](const double value) { return 5 * (value - 32) / 9; }},
-        {"FK", [](const double value) { return 5 * (value - 32) / 9 + 273; }},
+        {"FK", [](const double value) { return 5 * (value - 32) / 9 + KELVIN_CONSTANT; }},
         {"CF", [](const double value) { return 9 * value / 5 + 32; }},
-        {"CK", [](const double value) { return value + 273; }},
-        {"KF", [](const double value) { return 9 * (value - 273) / 5; }},
-        {"KC", [](const double value) { return value - 273; }}
+        {"CK", [](const double value) { return value + KELVIN_CONSTANT; }},
+        {"KF", [](const double value) { return 9 * (value - KELVIN_CONSTANT) / 5; }},
+        {"KC", [](const double value) { return value - KELVIN_CONSTANT; }}
     };
 
     try {
