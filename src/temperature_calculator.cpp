@@ -42,6 +42,7 @@ int temperature_conversion(const double temperature, const char unit_in, const c
     }
 }
 
+// To check the exercise works correctly, replace it on the main.cpp file.
 int main() {
     double temperature;
     char unit_in;
