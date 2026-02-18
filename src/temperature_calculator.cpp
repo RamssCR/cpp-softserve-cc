@@ -11,6 +11,8 @@
 #include "temperature_calculator.hpp"
 
 constexpr std::array units{'F', 'C', 'K'};
+constexpr double KELVIN_CONSTANT = 273.15;
+
 using ConversionFunc = std::function<double(double)>;
 
 char sanitize_unit(const char unit) {
@@ -26,7 +28,6 @@ char sanitize_unit(const char unit) {
 int temperature_conversion(const double temperature, const char unit_in, const char unit_out) {
     if (unit_in == unit_out) return static_cast<int>(temperature);
     const std::string conversion = {unit_in, unit_out};
-    constexpr double KELVIN_CONSTANT = 273.15;
 
     static const std::unordered_map<std::string, ConversionFunc> formulas{
         {"FC", [](const double value) { return 5 * (value - 32) / 9; }},
