@@ -8,6 +8,7 @@
 #include <functional>
 #include <unordered_map>
 #include <iostream>
+#include "temperature_calculator.hpp"
 
 constexpr std::array units{'F', 'C', 'K'};
 using ConversionFunc = std::function<double(double)>;
